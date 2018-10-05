@@ -3,7 +3,7 @@
     <div class="holder">
 
        <!-- when there are no processes -->
-       <p v-if="processes.length==0">you have more then one array item</p>
+       <p v-if="processes.length==0">there is no processes configured</p>
 
        <!-- list of processes -->
         <table>
@@ -187,7 +187,7 @@ export default {
       },
       removeProcess(id_process) {
         this.array.splice(id_process, 1);
-      }
+      },
   },
     created: function(){
         this.loadProcesses();
