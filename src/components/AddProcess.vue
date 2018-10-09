@@ -1,36 +1,6 @@
 <template>
   <div class="monitor">
     <div class="holder">
-
-       <!-- list of processes -->
-        <md-table v-model="searched" md-sort="name" md-sort-order="asc" md-fixed-header>
-            <md-table-toolbar>
-                <div class="md-toolbar-section-start">
-                    <h1 class="md-title">Processes</h1>
-                </div>
-
-                <md-field md-clearable class="md-toolbar-section-end">
-                    <md-input placeholder="Search by name..." v-model="search" @input="searchOnTable" />
-                </md-field>
-            </md-table-toolbar>
-
-            <md-table-row slot="md-table-row" v-for="(item, index) in searched" :key="index">
-                <md-table-cell md-label="ID" md-sort-by="id_process" md-numeric>{{ item.id_process }}</md-table-cell>
-                <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
-                <md-table-cell md-label="Type" md-sort-by="type">{{ item.type }}</md-table-cell>
-                <md-table-cell md-label="Description" md-sort-by="description">{{ item.description }}</md-table-cell>
-                <md-table-cell md-label="Status" md-sort-by="status">{{ item.status }}</md-table-cell>
-                <md-table-cell><i class="fa fa-minus-circle" v-on:click="removeProcess(index)"></i></md-table-cell>
-            </md-table-row>
-
-            <md-table-empty-state
-                    md-label="No processes found"
-                    :md-description="`No processes found for this '${search}' query. Try a different search term or create a new process.`">
-                <md-button class="md-primary md-raised" @click="addProcess">Create New Process</md-button>
-            </md-table-empty-state>
-        </md-table>
-
-
         <!-- add new -->
         <form @submit.prevent="addProcess">
             <table>
@@ -133,75 +103,103 @@
 </template>
 
 <script>
-
-
-    const toLower = text => {
-        return text.toString().toLowerCase()
-    }
-
-    const searchByName = (items, term) => {
-        if (term) {
-            return items.filter(item => toLower(item.name).includes(toLower(term)))
-        }
-
-        return items
-    }
-
 export default {
   data() {
       return {
-          search: null,
-          searched: [],
-          processes: [],
           process: {}
       }
   },
     methods: {
-        loadProcesses: function(){
-            return this.$http.get('http://localhost:8001/api/v1/processes').then(function(response){
-                this.processes = response.data;
-                this.searched = this.processes
+        addProcess(e) {
+            this.$validator.validateAll().then((result) => {
+                if (result) {
+                    this.processes.push({
+                        id_process: this.process.id_process,
+                        name: this.process.name,
+                        type: this.process.type,
+                        description: this.process.description,
+                        date_from: this.process.date_from,
+                        date_to: this.process.date_to,
+                        time_from: this.process.time_from,
+                        time_to: this.process.time_to,
+                        days_off: this.process.days_off,
+                        monitor: this.process.monitor,
+                        status: 'stopped',
+                    });
+                    e.preventDefault();
+
+                    this.$http.post('http://localhost:8001/api/v1/processes', this.process)
+                        .then(function(){});
+                }
             });
         },
-      addProcess(e) {
-          this.$validator.validateAll().then((result) => {
-              if (result) {
-                  this.processes.push({
-                      id_process: this.process.id_process,
-                      name: this.process.name,
-                      type: this.process.type,
-                      description: this.process.description,
-                      date_from: this.process.date_from,
-                      date_to: this.process.date_to,
-                      time_from: this.process.time_from,
-                      time_to: this.process.time_to,
-                      days_off: this.process.days_off,
-                      monitor: this.process.monitor,
-                      status: 'stopped',
-                  });
-                  e.preventDefault();
-
-                  this.$http.post('http://localhost:8001/api/v1/processes', this.process)
-                    .then(function(){});
-              }
-          });
-      },
-      removeProcess(index) {
-          return this.$http.delete('http://localhost:8001/api/v1/processes/'+this.searched[index].id_process).then(function(){
-              this.searched.splice(index, 1);
-          });
-      },
-        searchOnTable () {
-            this.searched = searchByName(this.processes, this.search)
-        }
   },
-    created: function(){
-        this.loadProcesses();
-    }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .modal-mask {
+        position: fixed;
+        z-index: 9998;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
+        display: table;
+        transition: opacity .3s ease;
+    }
 
+    .modal-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .modal-container {
+        width: 300px;
+        margin: 0px auto;
+        padding: 20px 30px;
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+        transition: all .3s ease;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .modal-header h3 {
+        margin-top: 0;
+        color: #42b983;
+    }
+
+    .modal-body {
+        margin: 20px 0;
+    }
+
+    .modal-default-button {
+        float: right;
+    }
+
+    /*
+     * The following styles are auto-applied to elements with
+     * transition="modal" when their visibility is toggled
+     * by Vue.js.
+     *
+     * You can easily play with the modal transition by editing
+     * these styles.
+     */
+
+    .modal-enter {
+        opacity: 0;
+    }
+
+    .modal-leave-active {
+        opacity: 0;
+    }
+
+    .modal-enter .modal-container,
+    .modal-leave-active .modal-container {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
 </style>
