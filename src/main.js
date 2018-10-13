@@ -4,7 +4,10 @@ import VeeValidate from 'vee-validate'
 import router from './router/router'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
-import  VueWindowModal from  'vue-window-modal'
+import VModal from 'vue-js-modal'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+import UUID from 'vue-uuid'
 
 import MonitorService from '@/api/api.service.monitor'
 import DateFilter from '@/api/date.filter'
@@ -12,7 +15,13 @@ import ErrorFilter from '@/api/error.filter'
 
 Vue.use(VeeValidate)
 Vue.use(VueMaterial)
-Vue.use(VueWindowModal)
+Vue.use(Vuetify)
+Vue.use(VModal, {
+    dialog: true,
+    dynamic: true,
+})
+Vue.use(UUID)
+
 
 MonitorService.init()
 
