@@ -36,7 +36,5 @@ jobs:
         - npm run test
     - stage: build
       script:
-        # Build all
-        - npm run build:docs
-        - npm run build:system
-        - npm run build:app
+        # Build
+        - npm run build
