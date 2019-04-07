@@ -1,4 +1,4 @@
-# Vue-app
+# vue-monitor
 [![Build Status](https://travis-ci.org/joaosoft/web.svg?branch=master)](https://travis-ci.org/joaosoft/web) | [![codecov](https://codecov.io/gh/joaosoft/web/branch/master/graph/badge.svg)](https://codecov.io/gh/joaosoft/web) | [![Go Report Card](https://goreportcard.com/badge/github.com/joaosoft/web)](https://goreportcard.com/report/github.com/joaosoft/web) | [![GoDoc](https://godoc.org/github.com/joaosoft/web?status.svg)](https://godoc.org/github.com/joaosoft/web)
 
 A vue app for my personal projects.
