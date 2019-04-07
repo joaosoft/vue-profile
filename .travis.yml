@@ -10,6 +10,7 @@ env:
 install:
   - npm install -g
   - npm ci
+  - npm update caniuse-lite browserslist
 
 before_script:
   # Install Webpack version
