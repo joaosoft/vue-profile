@@ -1,0 +1,42 @@
+language: node_js
+
+node_js:
+  - "11.15.3"
+  - "node"
+
+env:
+  - WEBPACK_VERSION=4.29.6
+
+install:
+  - npm install -g
+  - npm ci
+
+before_script:
+  # Install Webpack version
+  - if [[ -n "$WEBPACK_VERSION" ]]; then npm install --no-save webpack@$WEBPACK_VERSION; fi
+
+branches:
+  except:
+    - vue-monitor
+
+stages:
+  - lint
+  - test
+  - build
+
+jobs:
+  include:
+    - stage: lint
+      script:
+        # Run linter
+        - npm run lint
+    - stage: test
+      script:
+        # Run tests
+        - npm run test
+    - stage: build
+      script:
+        # Build all
+        - npm run build:docs
+        - npm run build:system
+        - npm run build:app
