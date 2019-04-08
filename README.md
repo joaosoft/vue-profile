@@ -1,5 +1,5 @@
 # vue-monitor
-[![Build Status](https://travis-ci.org/joaosoft/vue-app.svg?branch=master)](https://travis-ci.org/joaosoft/vue-app) | [![codecov](https://codecov.io/gh/joaosoft/vue-app/branch/master/graph/badge.svg)](https://codecov.io/gh/joaosoft/vue-app)
+[![Build Status](https://travis-ci.org/joaosoft/vue-monitor.svg?branch=master)](https://travis-ci.org/joaosoft/vue-monitor) | [![codecov](https://codecov.io/gh/joaosoft/vue-monitor/branch/master/graph/badge.svg)](https://codecov.io/gh/joaosoft/vue-monitor)
 
 
 A vue app for my personal project monitor [here](https://github.com/joaosoft/monitor).
