@@ -9,7 +9,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import UUID from 'vue-uuid'
 
-import MonitorService from '@/api/api.service.monitor'
+import ProfileService from '@/api/api.service.profile'
 import DateFilter from '@/api/date.filter'
 import ErrorFilter from '@/api/error.filter'
 
@@ -23,7 +23,7 @@ Vue.use(VModal, {
 Vue.use(UUID)
 
 
-MonitorService.init()
+ProfileService.init()
 
 Vue.filter('date', DateFilter)
 Vue.filter('error', ErrorFilter)

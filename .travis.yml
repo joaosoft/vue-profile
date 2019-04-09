@@ -18,7 +18,7 @@ before_script:
 
 branches:
   except:
-    - vue-monitor
+    - vue-profile
 
 stages:
   - lint

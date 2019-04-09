@@ -1,8 +1,8 @@
-# vue-monitor
-[![Build Status](https://travis-ci.org/joaosoft/vue-monitor.svg?branch=master)](https://travis-ci.org/joaosoft/vue-monitor) | [![codecov](https://codecov.io/gh/joaosoft/vue-monitor/branch/master/graph/badge.svg)](https://codecov.io/gh/joaosoft/vue-monitor)
+# vue-profile
+[![Build Status](https://travis-ci.org/joaosoft/vue-profile.svg?branch=master)](https://travis-ci.org/joaosoft/vue-profile) | [![codecov](https://codecov.io/gh/joaosoft/vue-profile/branch/master/graph/badge.svg)](https://codecov.io/gh/joaosoft/vue-profile)
 
 
-A vue app for my personal project monitor [here](https://github.com/joaosoft/monitor).
+A vue app for my personal project profile [here](https://github.com/joaosoft/profile).
 
 ###### If i miss something or you have something interesting, please be part of this project. Let me know! My contact is at the end.
 

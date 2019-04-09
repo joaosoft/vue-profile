@@ -11,14 +11,14 @@ export default new Router({
             component: () => import('@/views/Home')
         },
         {
+            path: '/projects',
+            name: 'projects',
+            component: () => import('@/views/Projects')
+        },
+        {
             path: '/about',
             name: 'about',
             component: () => import('@/views/About')
-        },
-        {
-            path: '/monitor',
-            name: 'monitor',
-            component: () => import('@/views/Monitor')
         },
     ]
 })
