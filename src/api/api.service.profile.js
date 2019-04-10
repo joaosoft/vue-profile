@@ -4,12 +4,21 @@ const ProfileService = {
   init() {
       ApiService.init()
   },
-  query (params) {
+  sections () {
     return ApiService
-      .query('sections/projects/contents', params)
+        .query('sections')
   },
-  get (slug) {
-    return ApiService.get('sections/projects/contents', slug)
+  sectionsContents () {
+    return ApiService
+        .query('sections/contents')
+  },
+  section (sectionKey) {
+    return ApiService
+        .query(`sections/${sectionKey}`)
+  },
+  contents (sectionKey) {
+    return ApiService
+      .query(`sections/${sectionKey}/contents`)
   },
 }
 

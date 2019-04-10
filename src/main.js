@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VeeValidate from 'vee-validate'
-import router from './router/router'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import VModal from 'vue-js-modal'
@@ -32,6 +31,5 @@ Vue.filter('error', ErrorFilter)
 Vue.config.productionTip = false
 
 new Vue({
-    router,
     render: h => h(App)
 }).$mount('#app')
