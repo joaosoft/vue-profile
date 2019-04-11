@@ -7,10 +7,13 @@
         <h1>{{ section.name }}</h1>
 
         <div v-for="content in section.contents" :key="content.key">
-          <b><b>{{ content.content.title }}</b></b>
-          <p>{{ content.content.description }}</p>
-          <p>{{ content.content.url }}</p>
-          <p><img v-bind:src="content.content.build"></p>
+          <h2>{{ content.content.title }}</h2>
+          <div class="section-body">
+            <p>{{ content.content.description }}</p>
+            <a v-bind:href="content.content.url"> {{ content.content.url }} </a>
+            <p><img v-bind:src="content.content.build"></p>
+          </div>
+
         </div>
 
       </section>
