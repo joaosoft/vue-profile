@@ -7,6 +7,7 @@ import VModal from 'vue-js-modal'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import UUID from 'vue-uuid'
+import router from './router/router'
 
 import ProfileService from '@/api/api.service.profile'
 import DateFilter from '@/api/date.filter'
@@ -31,5 +32,6 @@ Vue.filter('error', ErrorFilter)
 Vue.config.productionTip = false
 
 new Vue({
+    router,
     render: h => h(App)
 }).$mount('#app')

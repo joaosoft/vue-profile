@@ -38,7 +38,7 @@
 
         methods: {
             initialize () {
-                ProfileService.contents('profile').then(response => {
+                ProfileService.contents('projects').then(response => {
                     this.section = response.data;
                 });
             },
