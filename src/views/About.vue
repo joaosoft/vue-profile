@@ -2,8 +2,6 @@
   <div id="app">
 
     <section>
-      <h1>{{ section.name }}</h1>
-
       <div v-for="content in section.contents" :key="content.key">
         <h2>{{ content.content.title }}</h2>
         <div class="section-body">
