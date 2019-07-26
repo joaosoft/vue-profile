@@ -1,8 +1,11 @@
+import Vue from 'vue'
 import { ApiService } from './api.service'
+import { API_URL_PROFILE } from '@/api/config'
 
 const ProfileService = {
   init() {
-      ApiService.init()
+    ApiService.init()
+    Vue.axios.defaults.baseURL = API_URL_PROFILE
   },
   sections () {
     return ApiService

@@ -5,6 +5,7 @@
         <router-link to="/">Profile</router-link>
         <router-link to="/projects">Projects</router-link>
         <router-link to="/about">About</router-link>
+        <router-link to="/login">Login</router-link>
       </nav>
     </div>
     <div id="footer">
