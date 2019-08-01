@@ -1,27 +1,25 @@
-import Vue from 'vue'
 import { ApiService } from './api.service'
-import { API_URL_AUTH } from '@/api/config'
 
 const AuthService = {
   init() {
     ApiService.init()
-    Vue.axios.defaults.baseURL = API_URL_AUTH
   },
-  getToken () {
+  getToken (user) {
     return ApiService
-        .query('p/get-token')
+        .query('/auth/p/get-session', { params: user })
   },
   refreshToken () {
     return ApiService
-        .query('p/refresh-token')
+        .query('/auth/p/refresh-session')
   },
   signUp (user) {
     return ApiService
-        .post('p/sign-up', user)
+        .post('/auth/p/sign-up', user)
   },
   deactivateUser (idUser) {
+    ApiService.setHeader()
     return ApiService
-        .put(`users/${idUser}/deactivate`)
+        .put(`/auth/users/${idUser}/deactivate`)
   },
 }
 

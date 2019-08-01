@@ -10,6 +10,7 @@ import UUID from 'vue-uuid'
 import router from './router/router'
 
 import ProfileService from '@/api/api.service.profile'
+import AuthService from '@/api/api.service.auth'
 import DateFilter from '@/api/date.filter'
 import ErrorFilter from '@/api/error.filter'
 
@@ -24,6 +25,7 @@ Vue.use(UUID)
 
 
 ProfileService.init()
+AuthService.init()
 
 Vue.filter('date', DateFilter)
 Vue.filter('error', ErrorFilter)

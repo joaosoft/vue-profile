@@ -2,10 +2,12 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import JwtService from '@/api/jwt.service'
+import { API_URL } from '@/api/config'
 
 export const ApiService = {
   init () {
     Vue.use(VueAxios, axios)
+    Vue.axios.defaults.baseURL = API_URL
   },
 
   setHeader () {
@@ -14,18 +16,18 @@ export const ApiService = {
 
   query (resource, params) {
     return Vue.axios
-      .get(resource, params)
-      .catch((error) => {
-        throw new Error(`[RWV] ApiService ${error}`)
-      })
+        .get(resource, params)
+        .catch((error) => {
+          throw new Error(`[RWV] ApiService ${error}`)
+        })
   },
 
   get (resource, slug = '') {
     return Vue.axios
-      .get(`${resource}/${slug}`)
-      .catch((error) => {
-        throw new Error(`[RWV] ApiService ${error}`)
-      })
+        .get(`${resource}/${slug}`)
+        .catch((error) => {
+          throw new Error(`[RWV] ApiService ${error}`)
+        })
   },
 
   post (resource, params) {
@@ -38,14 +40,14 @@ export const ApiService = {
 
   put (resource, params) {
     return Vue.axios
-      .put(`${resource}`, params)
+        .put(`${resource}`, params)
   },
 
   delete (resource) {
     return Vue.axios
-      .delete(resource)
-      .catch((error) => {
-        throw new Error(`[RWV] ApiService ${error}`)
-      })
+        .delete(resource)
+        .catch((error) => {
+          throw new Error(`[RWV] ApiService ${error}`)
+        })
   }
 }
