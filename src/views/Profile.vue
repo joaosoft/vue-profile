@@ -19,6 +19,7 @@
 
 <script>
     import ProfileService from '@/api/api.service.profile'
+    import AclService from '@/api/api.service.acl'
 
     export default {
         name: 'Profile',
@@ -39,6 +40,8 @@
                 ProfileService.contents('profile').then(response => {
                     this.section = response.data;
                 });
+
+              AclService.checkAcl('1', '1', '1', 'GET', 'url', 'user');
             },
         },
     }

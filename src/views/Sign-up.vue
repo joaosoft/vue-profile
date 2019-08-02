@@ -32,7 +32,7 @@
       }
     },
     methods: {
-      onSubmit (e) {
+      onSubmit () {
         AuthService.signUp(this.user).then(response => {
           this.data = response.data;
         });

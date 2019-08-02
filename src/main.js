@@ -11,6 +11,8 @@ import router from './router/router'
 
 import ProfileService from '@/api/api.service.profile'
 import AuthService from '@/api/api.service.auth'
+import AclService from '@/api/api.service.acl'
+
 import DateFilter from '@/api/date.filter'
 import ErrorFilter from '@/api/error.filter'
 
@@ -26,6 +28,7 @@ Vue.use(UUID)
 
 ProfileService.init()
 AuthService.init()
+AclService.init()
 
 Vue.filter('date', DateFilter)
 Vue.filter('error', ErrorFilter)

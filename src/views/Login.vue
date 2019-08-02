@@ -29,7 +29,7 @@
       }
     },
     methods: {
-      onSubmit (e) {
+      onSubmit () {
         AuthService.getToken(this.user).then(response => {
           this.data = response.data;
         });
